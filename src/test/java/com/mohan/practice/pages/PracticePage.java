@@ -10,6 +10,7 @@ import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.FindBys;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 import org.springframework.stereotype.Component;
@@ -51,6 +52,9 @@ public class PracticePage {
 
     @FindBy(xpath ="//ul[contains(@class,'navbar-right')]/li/a[contains(text(),'Alerts')]/following-sibling::ul/li/a[contains(text(),'Window')]" )
     private WebElement windowPopupModal;
+
+    @FindBy(xpath ="//ul[contains(@class,'navbar-right')]/li/a[contains(text(),'Alerts')]/following-sibling::ul/li/a[contains(text(),'Javascript')]" )
+    private WebElement javascriptAlerts;
 
     @FindBy(xpath ="//ul[contains(@class,'navbar-right')]/li/a[contains(text(),'Alerts')]/following-sibling::ul/li/a[contains(text(),'Download')]" )
     private WebElement fileDownload;
@@ -112,6 +116,17 @@ public class PracticePage {
     @FindBy(id ="slider6" )
     private WebElement slider6;
 
+    @FindBys({@FindBy(xpath = "//div[contains(text(),'Alert Box')]/following::div/button")})
+    private List<WebElement> javascriptSubmitButtons;
+
+    @FindBy(id ="textbox" )
+    private WebElement textForDownload;
+
+    @FindBy(id ="create" )
+    private WebElement btnGenerateFile;
+
+    @FindBy(id ="link-to-download" )
+    private WebElement btnDownloadFile;
 
 
 
@@ -142,6 +157,24 @@ public class PracticePage {
 
         DriverUtil.clickWhenReady(progressBars);
         DriverUtil.clickWhenReady(sliders);
+    }
+
+    public void openWindowPopupModal(){
+
+        DriverUtil.clickWhenReady(alertsAndModals);
+        DriverUtil.clickWhenReady(windowPopupModal);
+    }
+
+    public void openJavascriptAlerts(){
+
+        DriverUtil.clickWhenReady(alertsAndModals);
+        DriverUtil.clickWhenReady(javascriptAlerts);
+    }
+
+    public void openFileDownload(){
+
+        DriverUtil.clickWhenReady(alertsAndModals);
+        DriverUtil.clickWhenReady(fileDownload);
     }
 
 
@@ -379,6 +412,27 @@ public class PracticePage {
         tempPixels = tempPixels * (Amount - SliderMin);
         pixels = tempPixels;
         return pixels;
+    }
+
+    public void clickTwitterAndFacebook(){
+        DriverUtil.clickWhenReady(btnFollowFacebookAndTwitter);
+    }
+
+    public void clickJavascriptAlert(){
+        DriverUtil.clickWhenReady(javascriptSubmitButtons.get(0));
+    }
+
+    public void setDownloadText(String text){
+        DriverUtil.setValue(textForDownload,text);
+    }
+
+    public void generateFile(){
+        DriverUtil.clickWhenReady(btnGenerateFile);
+    }
+
+    public void downloadGeneratedFile(){
+        DriverUtil.waitForVisibility(btnDownloadFile,10);
+        DriverUtil.clickWhenReady(btnDownloadFile);
     }
 
 }

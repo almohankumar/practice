@@ -89,6 +89,7 @@ public class DriverManager {
         prefs.put("credentials_enable_service", false);
         prefs.put("profile.password_manager_enabled", false);
         prefs.put("download.default_directory", System.getProperty("user.dir") + downloadPath);
+        prefs.put("download.prompt_for_download",false);
         prefs.put("profile.default_content_settings.popups", 0);
         prefs.put("traceCategories", "browser,devtools.timeline,devtools"); // comma-separated trace categories
 
