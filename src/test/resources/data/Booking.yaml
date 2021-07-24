@@ -1,0 +1,8 @@
+firstname: Mohankumar
+lastname: Loganathan
+totalprice: 500
+depositpaid: true
+bookingdates:
+  checkin: 2021-07-24
+  checkout: 2021-07-27
+additionalneeds: Breakfast
