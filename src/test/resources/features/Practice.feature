@@ -1,6 +1,6 @@
 @practice
 Feature: To navigate to selenium easy and perform the practice.
-
+  @uc1
   Scenario: Use case 1 - Form Submission
     Given I navigate to selenium easy test page
     And I select ajax page option under input forms menu
